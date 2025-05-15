@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmld3q6i1l3nc"]
+
+[ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
+[ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
+[ext_resource type="FontFile" uid="uid://f2fxybw5j22t" path="res://src/global/UI/RINGM___.TTF" id="1_rdm6y"]
+[ext_resource type="Texture2D" uid="uid://dhn5s78ijbve7" path="res://src/global/UI/Button_52x14.png" id="2_glcjn"]
+[ext_resource type="Texture2D" uid="uid://4komnfcdamey" path="res://src/global/UI/logo-fellowship.png" id="4_ysmy1"]
+[ext_resource type="Texture2D" uid="uid://d0x4l8yelao23" path="res://src/global/UI/logo_vertical_color_light.png" id="6_se81v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hb1d"]
+texture = ExtResource("1_npkow")
+modulate_color = Color(0.354063, 0.354063, 0.354063, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2bwi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0n411"]
+texture = ExtResource("2_glcjn")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hikmi")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3hb1d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -371.0
+offset_top = -191.0
+offset_right = 381.0
+offset_bottom = 354.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_OPTIONS"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_QUIT"
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -429.0
+offset_top = 61.0
+offset_right = 442.0
+offset_bottom = 343.0
+grow_horizontal = 2
+texture = ExtResource("4_ysmy1")
+
+[node name="EnglishButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 321.0
+offset_right = 410.0
+offset_bottom = 457.0
+text = "ENGLISH"
+
+[node name="ItalianButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 136.0
+offset_right = 410.0
+offset_bottom = 272.0
+text = "ITALIANO"
+
+[node name="FrenchButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 481.0
+offset_right = 407.0
+offset_bottom = 617.0
+text = "FRENCH"
+
+[node name="GermanButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 650.0
+offset_right = 392.0
+offset_bottom = 786.0
+text = "GERMAN"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1529.0
+offset_top = 410.0
+offset_right = 1835.0
+offset_bottom = 644.0
+
+[node name="Godot" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.00003
+offset_top = 783.0
+offset_right = 1025.0
+offset_bottom = 1954.0
+scale = Vector2(0.24, 0.254231)
+texture = ExtResource("6_se81v")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]
+[connection signal="pressed" from="ItalianButton" to="." method="_on_italian_button_pressed"]
+[connection signal="pressed" from="FrenchButton" to="." method="_on_french_button_pressed"]
+[connection signal="pressed" from="GermanButton" to="." method="_on_german_button_pressed"]

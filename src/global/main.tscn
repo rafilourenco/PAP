@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0vst6pq238mg"]
+
+[ext_resource type="PackedScene" uid="uid://dmld3q6i1l3nc" path="res://src/global/main_menu.tscn" id="1_g7jbo"]
+[ext_resource type="PackedScene" uid="uid://d3hl2acb4trxm" path="res://src/global/options_menu.tscn" id="2_ia73x"]
+[ext_resource type="PackedScene" uid="uid://dv61bs82ppcx" path="res://src/battle/battle.tscn" id="4_oxcl6"]
+
+[sub_resource type="Resource" id="Resource_qecea"]
+metadata/__load_path__ = "res://src/global/pause_menu.tscn"
+
+[node name="MAIN" type="Node2D"]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_g7jbo")]
+
+[node name="Options_Menu" parent="." instance=ExtResource("2_ia73x")]
+
+[node name="PauseMenu" parent="."]
+
+[node name="battle" parent="." instance=ExtResource("4_oxcl6")]
