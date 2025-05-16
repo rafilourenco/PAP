@@ -10,6 +10,7 @@ var current_unit: Unit                # The unit currently taking its turn
 var has_moved: bool = false           # Whether the current unit has moved this turn
 var has_attacked: bool = false        # Whether the current unit has attacked this turn
 var current_acs: Array                # Current available actions (move or attack)
+var turn_number: int = 1
 
 # === Initialization ===
 func _ready() -> void:
@@ -121,7 +122,6 @@ func update_status() -> void:
 		_update_paths()
 
 func _step_turn() -> void:
-	# Advance to the next unit in the group, or next group if needed
 	var prev_group_index := current_group_index
 	var prev_unit_index := current_unit_index
 	var safety := 0 # Prevent infinite loop
@@ -132,6 +132,9 @@ func _step_turn() -> void:
 			current_group_index = wrapi(current_group_index + 1, 0, groups.size())
 			current_group = groups[current_group_index]
 			current_unit_index = 0
+			# Only increment turn_number when returning to the player group
+			if current_group.name == "player":
+				turn_number += 1
 		if prev_group_index == current_group_index and prev_unit_index == current_unit_index:
 			break
 		if current_group.get_child_count() == 0:
@@ -167,6 +170,7 @@ func _begin_turn() -> void:
 		await _opponent_ai_turn()
 	else:
 		_update_paths()
+	_update_turn_labels()
 
 func _on_unit_moved_to_tile(pos: Vector2) -> void:
 	# Smooth camera follow when unit moves
@@ -241,6 +245,17 @@ func _opponent_ai_turn() -> void:
 		has_attacked = true  # Ensure the turn ends even if no attack
 
 	update_status()
+
+func _update_turn_labels() -> void:
+	var turn_label = get_tree().current_scene.get_node("UI/TurnLabel")
+	var turn_count_label = get_tree().current_scene.get_node("UI/TurnCountLabel")
+	if turn_label and turn_label is Label:
+		if current_group.name == "player":
+			turn_label.text = "PLAYER'S TURN"
+		else:
+			turn_label.text = "OPPONENT'S TURN"
+	if turn_count_label and turn_count_label is Label:
+		turn_count_label.text = "Turn %d" % turn_number
 
 # === Path and Action Management ===
 func _update_paths() -> void:

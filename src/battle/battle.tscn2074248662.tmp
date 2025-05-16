@@ -67,16 +67,3 @@ script = ExtResource("10_htieh")
 [node name="Label" type="Label" parent="FPScounter"]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="TurnCountLabel" type="Label" parent="UI"]
-offset_left = 1.0
-offset_top = 16.0
-offset_right = 41.0
-offset_bottom = 39.0
-
-[node name="TurnLabel" type="Label" parent="UI"]
-offset_top = 54.0
-offset_right = 40.0
-offset_bottom = 77.0
