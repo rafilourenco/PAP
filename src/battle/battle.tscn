@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv61bs82ppcx"]
+[gd_scene load_steps=12 format=3 uid="uid://dv61bs82ppcx"]
 
 [ext_resource type="Script" uid="uid://cr7w03l1kbnt6" path="res://src/battle/battle.gd" id="1_g48xb"]
 [ext_resource type="TileSet" uid="uid://bhs3agn1mn0oo" path="res://src/maps/grass_open/grass_open_tileset.tres" id="2_4o5gu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cgkxdpau8vmsu" path="res://src/unit/definitions/peasant.tres" id="6_r3dr5"]
 [ext_resource type="Resource" uid="uid://da4gxe2vdp43a" path="res://src/unit/definitions/knight.tres" id="7_u5ntj"]
 [ext_resource type="Script" uid="uid://cqwnvnqal4bdo" path="res://src/battle/fp_scounter.gd" id="10_htieh"]
+[ext_resource type="Script" uid="uid://7hw8dgnu7sk6" path="res://src/battle/turn_display.gd" id="11_817hq"]
 
 [node name="battle" type="Node2D"]
 script = ExtResource("1_g48xb")
@@ -30,7 +31,7 @@ y_sort_enabled = true
 [node name="player" type="Node2D" parent="units"]
 y_sort_enabled = true
 
-[node name="unit3" parent="units/player" instance=ExtResource("3_qxq8g")]
+[node name="unit1" parent="units/player" instance=ExtResource("3_qxq8g")]
 position = Vector2(20, 55)
 def = ExtResource("7_u5ntj")
 
@@ -68,15 +69,16 @@ script = ExtResource("10_htieh")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="TurnDisplay" type="CanvasLayer" parent="."]
+script = ExtResource("11_817hq")
 
-[node name="TurnCountLabel" type="Label" parent="UI"]
+[node name="TurnCountLabel" type="Label" parent="TurnDisplay"]
 offset_left = 1.0
 offset_top = 16.0
 offset_right = 41.0
 offset_bottom = 39.0
 
-[node name="TurnLabel" type="Label" parent="UI"]
+[node name="TurnLabel" type="Label" parent="TurnDisplay"]
 offset_top = 54.0
 offset_right = 40.0
 offset_bottom = 77.0

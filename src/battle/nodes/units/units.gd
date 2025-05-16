@@ -2,7 +2,7 @@ class_name UnitsContainer
 extends Node2D
 
 # === Properties ===
-var groups: Array = []                # Array of unit groups (player, opponent, etc.)
+var groups: Array = []                # All unit groups (player, opponent, etc.)
 var current_group: Node               # The group whose turn it is
 var current_group_index: int = 0      # Index of the current group
 var current_unit_index: int = 0       # Index of the current unit in the group
@@ -12,16 +12,13 @@ var has_attacked: bool = false        # Whether the current unit has attacked th
 var current_acs: Array                # Current available actions (move or attack)
 var turn_number: int = 1
 
-# === Initialization ===
 func _ready() -> void:
-	# Collect all groups (nodes with children) as unit groups
+	# Gather all groups (nodes with children) as unit groups
 	for child in get_children():
 		if child.get_child_count() > 0:
 			groups.append(child)
 
-# === Battle Flow ===
 func start_battle() -> void:
-	# Start the battle with the first group
 	current_group = groups[0]
 	_begin_turn()
 
@@ -34,7 +31,6 @@ func get_active_units() -> Array[Unit]:
 				units.append(child)
 	return units
 
-# === Input Handling ===
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse hover: highlight move path
 	if event is InputEventMouseMotion:
@@ -62,7 +58,6 @@ func _unhandled_input(event: InputEvent) -> void:
 				update_status()
 				return
 
-# === Attack Processing ===
 func _process_attack(ac: ActionInstance) -> void:
 	# Highlight the attacked cell
 	if ac.path.size() > 0:
@@ -77,7 +72,6 @@ func _process_attack(ac: ActionInstance) -> void:
 					child.health -= 1
 	_check_for_victory()
 
-# === Victory/Defeat Checking ===
 func _check_for_victory() -> void:
 	var player_alive := false
 	var opponent_alive := false
@@ -111,7 +105,6 @@ func _show_victory_screen(player_dead: bool, opponent_dead: bool) -> void:
 func _return_to_main_menu() -> void:
 	get_tree().change_scene_to_file("res://src/global/main_menu.tscn")
 
-# === Turn and Status Management ===
 func update_status() -> void:
 	# If both moved and attacked, end turn; otherwise, update available actions
 	if has_attacked and has_moved:
@@ -122,29 +115,25 @@ func update_status() -> void:
 		_update_paths()
 
 func _step_turn() -> void:
-	var prev_group_index := current_group_index
-	var prev_unit_index := current_unit_index
-	var safety := 0 # Prevent infinite loop
-
-	while safety < 100:
+	# Find the next valid unit to take a turn, looping through all groups and units
+	var safety := 0
+	while safety < 1000:
 		current_unit_index += 1
 		if current_unit_index >= current_group.get_child_count():
-			current_group_index = wrapi(current_group_index + 1, 0, groups.size())
-			current_group = groups[current_group_index]
 			current_unit_index = 0
+			current_group_index = (current_group_index + 1) % groups.size()
+			current_group = groups[current_group_index]
 			# Only increment turn_number when returning to the player group
 			if current_group.name == "player":
 				turn_number += 1
-		if prev_group_index == current_group_index and prev_unit_index == current_unit_index:
-			break
 		if current_group.get_child_count() == 0:
+			safety += 1
 			continue
 		var potential_unit = current_group.get_child(current_unit_index)
 		if potential_unit.is_inside_tree() and potential_unit.is_active:
 			_begin_turn()
 			return
 		safety += 1
-
 	print("No unit available for next turn.")
 
 func _begin_turn() -> void:
@@ -184,9 +173,8 @@ func _on_unit_moved_to_tile(pos: Vector2) -> void:
 		tween.tween_property(camera, "global_position", pos, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		camera.set_meta("move_tween", tween)
 
-# === AI Logic ===
 func _opponent_ai_turn() -> void:
-	# Collect all alive player units
+	# Simple AI: move toward and attack the closest player unit
 	var player_units: Array = []
 	for group in groups:
 		if group.name == "player":
@@ -194,7 +182,9 @@ func _opponent_ai_turn() -> void:
 				if unit.health > 0 and unit.is_inside_tree():
 					player_units.append(unit)
 	if player_units.is_empty():
-		_step_turn()
+		has_attacked = true
+		has_moved = true
+		update_status()
 		return
 
 	# Find the closest player unit
@@ -244,20 +234,15 @@ func _opponent_ai_turn() -> void:
 	else:
 		has_attacked = true  # Ensure the turn ends even if no attack
 
+	has_moved = true # AI always ends its turn after acting
 	update_status()
 
 func _update_turn_labels() -> void:
-	var turn_label = get_tree().current_scene.get_node("UI/TurnLabel")
-	var turn_count_label = get_tree().current_scene.get_node("UI/TurnCountLabel")
-	if turn_label and turn_label is Label:
-		if current_group.name == "player":
-			turn_label.text = "PLAYER'S TURN"
-		else:
-			turn_label.text = "OPPONENT'S TURN"
-	if turn_count_label and turn_count_label is Label:
-		turn_count_label.text = "Turn %d" % turn_number
+	# Update the turn display UI
+	var turn_display = get_tree().current_scene.get_node("TurnDisplay")
+	if turn_display:
+		turn_display.set_turn_info(current_group.name == "player", turn_number)
 
-# === Path and Action Management ===
 func _update_paths() -> void:
 	# Update available actions for the current unit
 	EventBus.show_move_path.emit(null)
@@ -270,7 +255,6 @@ func _update_paths() -> void:
 	EventBus.show_move_acs.emit(current_acs)
 	EventBus.show_attack_acs.emit([])
 
-# === UI Helpers ===
 func _show_attack_info(attacker: Unit, target: Unit) -> void:
 	# Display attack info in the UI
 	var label = get_tree().current_scene.get_node("AttackInfoLabel")
@@ -280,7 +264,6 @@ func _show_attack_info(attacker: Unit, target: Unit) -> void:
 		else:
 			label.text = "%s attacked no one" % attacker.name
 
-# === AI Scoring Helper ===
 func _score_action(move_ac, attack_ac, closest_unit) -> float:
 	# Score a potential move/attack for AI decision-making
 	var score := 0.0
