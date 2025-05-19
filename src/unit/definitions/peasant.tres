@@ -84,3 +84,4 @@ frames = ExtResource("1_qubse")
 type_components = Array[PackedScene]([])
 move_definitions = Array[ExtResource("2_6sa58")]([SubResource("Resource_ehg4u"), SubResource("Resource_6n46p"), SubResource("Resource_igoxf"), SubResource("Resource_s2rgw"), SubResource("Resource_hfh77"), SubResource("Resource_l4rjs"), SubResource("Resource_mljte"), SubResource("Resource_67w1i")])
 ability_definitions = Array[ExtResource("2_6sa58")]([SubResource("Resource_kv6ls"), SubResource("Resource_3r7tr"), SubResource("Resource_q6sbi"), SubResource("Resource_afp5n")])
+max_health = 2

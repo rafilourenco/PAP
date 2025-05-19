@@ -16,6 +16,11 @@ func _ready() -> void:
 	# Gather all groups (nodes with children) as unit groups
 	for child in get_children():
 		if child.get_child_count() > 0:
+			# Shuffle the order of units in this group for the first game turn
+			var children := child.get_children()
+			children.shuffle()
+			for i in range(children.size()):
+				child.move_child(children[i], i)
 			groups.append(child)
 
 func start_battle() -> void:
@@ -91,9 +96,9 @@ func _show_victory_screen(player_dead: bool, opponent_dead: bool) -> void:
 	# Show result popup
 	var msg := ""
 	if player_dead and not opponent_dead:
-		msg = "Defeat! All your units have fallen."
+		msg = "GAME_STATUS_YOU_LOSE"
 	elif opponent_dead and not player_dead:
-		msg = "Victory! All enemy units defeated."
+		msg = "GAME_STATUS_YOU_WIN"
 	else:
 		msg = "Draw!"
 	var popup := AcceptDialog.new()
@@ -115,6 +120,21 @@ func update_status() -> void:
 		_update_paths()
 
 func _step_turn() -> void:
+	# Prevent infinite recursion if the game is over
+	var player_alive := false
+	var opponent_alive := false
+	for group in groups:
+		if group.name == "player":
+			for unit in group.get_children():
+				if unit.health > 0:
+					player_alive = true
+		elif group.name == "opponent":
+			for unit in group.get_children():
+				if unit.health > 0:
+					opponent_alive = true
+	if not player_alive or not opponent_alive:
+		return # Game is over, don't proceed
+
 	# Find the next valid unit to take a turn, looping through all groups and units
 	var safety := 0
 	while safety < 1000:
@@ -255,14 +275,6 @@ func _update_paths() -> void:
 	EventBus.show_move_acs.emit(current_acs)
 	EventBus.show_attack_acs.emit([])
 
-func _show_attack_info(attacker: Unit, target: Unit) -> void:
-	# Display attack info in the UI
-	var label = get_tree().current_scene.get_node("AttackInfoLabel")
-	if label:
-		if target:
-			label.text = "%s attacked %s" % [attacker.name, target.name]
-		else:
-			label.text = "%s attacked no one" % attacker.name
 
 func _score_action(move_ac, attack_ac, closest_unit) -> float:
 	# Score a potential move/attack for AI decision-making

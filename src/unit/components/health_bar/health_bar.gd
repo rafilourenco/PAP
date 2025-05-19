@@ -43,7 +43,7 @@ func _draw() -> void:
 		x += BOX_SIZE.x + SPACING
 
 func init(v: int, max_v: int) -> void:
-	max_value = v
+	max_value = max_v
 	value = v
 	queue_redraw()
 

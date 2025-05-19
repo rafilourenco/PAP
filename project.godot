@@ -25,7 +25,6 @@ EventBus="*res://src/global/event_bus.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://src/global/UI/use162.png"
 mouse_cursor/custom_image_hotspot=Vector2(25, 2)

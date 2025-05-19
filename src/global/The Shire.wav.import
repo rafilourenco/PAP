@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bce64ev2nnydf"
+path="res://.godot/imported/The Shire.wav-7287d4267880f5cbfe6d597316c1e0bb.sample"
+
+[deps]
+
+source_file="res://src/global/The Shire.wav"
+dest_files=["res://.godot/imported/The Shire.wav-7287d4267880f5cbfe6d597316c1e0bb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

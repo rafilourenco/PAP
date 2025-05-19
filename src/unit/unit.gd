@@ -29,6 +29,8 @@ var is_active: bool:
 func _ready() -> void:
 	global_position = Navigation.snap_to_tile(global_position, true)
 	abilities_db.unit = self
+	max_health = def.max_health
+	health = max_health
 	health_bar.init(health, max_health)
 	
 	_init_def()
