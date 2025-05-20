@@ -62,39 +62,8 @@ offset_bottom = 282.0
 grow_horizontal = 2
 texture = ExtResource("4_ysmy1")
 
-[node name="EnglishButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1613.0
-offset_top = 291.0
-offset_right = 1831.0
-offset_bottom = 427.0
-text = "ENGLISH"
-
-[node name="ItalianButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1615.0
-offset_top = 108.0
-offset_right = 1833.0
-offset_bottom = 244.0
-text = "ITALIANO"
-
-[node name="FrenchButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1606.0
-offset_top = 483.0
-offset_right = 1824.0
-offset_bottom = 619.0
-text = "FRENCH"
-
-[node name="GermanButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1608.0
-offset_top = 616.0
-offset_right = 1826.0
-offset_bottom = 752.0
-text = "GERMAN"
-
 [node name="MainButtons" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,7 +155,6 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
@@ -205,7 +173,6 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
@@ -223,13 +190,12 @@ layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
-text = "conta"
+text = "MENU_LABEL_ACCOUNT"
 
 [node name="Control2" type="Control" parent="MainButtons/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -242,7 +208,6 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
@@ -260,7 +225,6 @@ layout_mode = 2
 texture = ExtResource("11_o8hlc")
 
 [node name="Options" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -296,7 +260,6 @@ size_flags_vertical = 3
 theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
 theme_override_font_sizes/font_size = 75
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
@@ -333,13 +296,15 @@ stream = ExtResource("7_ro8wv")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]
-[connection signal="pressed" from="ItalianButton" to="." method="_on_italian_button_pressed"]
-[connection signal="pressed" from="FrenchButton" to="." method="_on_french_button_pressed"]
-[connection signal="pressed" from="GermanButton" to="." method="_on_german_button_pressed"]
+[node name="LanguageDropdown" type="OptionButton" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 20.0
+
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button3" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="Options/Label/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="Options/FullscreenControl" to="Options/FullscreenControl" method="_on_toggled"]
+[connection signal="item_selected" from="LanguageDropdown" to="." method="_on_language_dropdown_item_selected"]

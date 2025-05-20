@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Config="*res://src/global/config.gd"
 Navigation="*res://src/global/navigation.gd"
 EventBus="*res://src/global/event_bus.gd"
+AudioManager="*res://src/global/audio_manager.gd"
 
 [display]
 
@@ -28,6 +29,10 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://src/global/UI/use162.png"
 mouse_cursor/custom_image_hotspot=Vector2(25, 2)
+
+[gui]
+
+theme/custom_font="uid://bpjyibjn6iecr"
 
 [input]
 
@@ -44,7 +49,7 @@ KEY_SPACE={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://src/global/localization/LanguageMaster.BOSNIAN;.translation", "res://src/global/localization/LanguageMaster.DANISH.translation", "res://src/global/localization/LanguageMaster.DUTCH.translation", "res://src/global/localization/LanguageMaster.ENGLISH.translation", "res://src/global/localization/LanguageMaster.FINNISH.translation", "res://src/global/localization/LanguageMaster.FRENCH.translation", "res://src/global/localization/LanguageMaster.GERMAN.translation", "res://src/global/localization/LanguageMaster.HUNGARIAN.translation", "res://src/global/localization/LanguageMaster.ITALIAN.translation", "res://src/global/localization/LanguageMaster.NORWEGIAN.translation", "res://src/global/localization/LanguageMaster.POLISH.translation", "res://src/global/localization/LanguageMaster.PORTUGUESE.translation", "res://src/global/localization/LanguageMaster.ROMANIAN.translation", "res://src/global/localization/LanguageMaster.SPANISH.translation", "res://src/global/localization/LanguageMaster.SWEDISH.translation")
+locale/translations=PackedStringArray("res://src/global/localization/LanguageMaster.DANISH.translation", "res://src/global/localization/LanguageMaster.DUTCH.translation", "res://src/global/localization/LanguageMaster.ENGLISH.translation", "res://src/global/localization/LanguageMaster.FINNISH.translation", "res://src/global/localization/LanguageMaster.FRENCH.translation", "res://src/global/localization/LanguageMaster.GERMAN.translation", "res://src/global/localization/LanguageMaster.HUNGARIAN.translation", "res://src/global/localization/LanguageMaster.ITALIAN.translation", "res://src/global/localization/LanguageMaster.NORWEGIAN.translation", "res://src/global/localization/LanguageMaster.POLISH.translation", "res://src/global/localization/LanguageMaster.PORTUGUESE.translation", "res://src/global/localization/LanguageMaster.ROMANIAN.translation", "res://src/global/localization/LanguageMaster.SPANISH.translation", "res://src/global/localization/LanguageMaster.SWEDISH.translation", "res://src/global/localization/LanguageMaster.CZECH.translation", "res://src/global/localization/LanguageMaster.TURKISH.translation", "res://src/global/localization/LanguageMaster.ARABIC.translation", "res://src/global/localization/LanguageMaster.BULGARIAN.translation", "res://src/global/localization/LanguageMaster.GREEK.translation", "res://src/global/localization/LanguageMaster.HEBREW.translation", "res://src/global/localization/LanguageMaster.JAPANESE.translation", "res://src/global/localization/LanguageMaster.KOREAN.translation", "res://src/global/localization/LanguageMaster.RUSSIAN.translation", "res://src/global/localization/LanguageMaster.THAI.translation", "res://src/global/localization/LanguageMaster.SIMPLIFIED.translation", "res://src/global/localization/LanguageMaster.TRADITIONAL.translation", "res://src/global/localization/LanguageMaster.BOSNIAN;.translation")
 
 [rendering]
 
