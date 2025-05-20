@@ -1,7 +1,7 @@
 extends Control
 
 const CONFIG_PATH := "user://settings.cfg"
-@onready var main_buttons: VBoxContainer = $MainButtons
+@onready var main_buttons: Panel = $MainButtons
 @onready var options: Panel = $Options
 
 func save_language(lang: String) -> void:

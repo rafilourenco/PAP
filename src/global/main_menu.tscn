@@ -1,17 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmld3q6i1l3nc"]
+[gd_scene load_steps=19 format=3 uid="uid://dmld3q6i1l3nc"]
 
 [ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
 [ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
 [ext_resource type="FontFile" uid="uid://f2fxybw5j22t" path="res://src/global/UI/RINGM___.TTF" id="1_rdm6y"]
 [ext_resource type="Texture2D" uid="uid://dhn5s78ijbve7" path="res://src/global/UI/Button_52x14.png" id="2_glcjn"]
 [ext_resource type="Texture2D" uid="uid://4komnfcdamey" path="res://src/global/UI/logo-fellowship.png" id="4_ysmy1"]
+[ext_resource type="Texture2D" uid="uid://wbfdqqwo3av5" path="res://src/global/UI/CornerKnot_14x14.png" id="5_o8hlc"]
 [ext_resource type="AudioStream" uid="uid://bce64ev2nnydf" path="res://src/global/The Shire.wav" id="7_ro8wv"]
 [ext_resource type="Script" uid="uid://cg5hac83wies3" path="res://src/global/audio_control.gd" id="7_smjop"]
 [ext_resource type="Script" uid="uid://b6x4lma1c8ur8" path="res://src/global/fullscreen_control.gd" id="8_h32bd"]
+[ext_resource type="Texture2D" uid="uid://b7hjg4g6swftb" path="res://src/global/UI/RectangleBox_96x96.png" id="9_h32bd"]
+[ext_resource type="Texture2D" uid="uid://0c2br6lgg0ss" path="res://src/global/UI/TopPatternPanel_02_33x15.png" id="10_3pb76"]
+[ext_resource type="Texture2D" uid="uid://b076wk1pmp7ws" path="res://src/global/UI/BottomPatternPanel_119x17.png" id="11_o8hlc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hb1d"]
 texture = ExtResource("1_npkow")
 modulate_color = Color(0.354063, 0.354063, 0.354063, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj7ps"]
+texture = ExtResource("9_h32bd")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2bwi"]
 
@@ -44,72 +51,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3hb1d")
 
-[node name="MainButtons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -937.0
-offset_top = -204.0
-offset_right = -185.0
-offset_bottom = 341.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="Button" type="Button" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
-theme_override_font_sizes/font_size = 75
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
-text = "MENU_LABEL_PLAY"
-
-[node name="Button2" type="Button" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
-theme_override_font_sizes/font_size = 75
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
-text = "MENU_OPTIONS"
-
-[node name="Button3" type="Button" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_fonts/font = ExtResource("1_rdm6y")
-theme_override_font_sizes/font_size = 75
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
-text = "MENU_LABEL_QUIT"
-
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -988.0
-offset_top = 17.0
-offset_right = -117.0
-offset_bottom = 299.0
+offset_left = -435.5
+offset_right = 435.5
+offset_bottom = 282.0
 grow_horizontal = 2
 texture = ExtResource("4_ysmy1")
 
@@ -145,6 +94,171 @@ offset_right = 1826.0
 offset_bottom = 752.0
 text = "GERMAN"
 
+[node name="MainButtons" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -203.0
+offset_right = 221.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
+
+[node name="TopLeft" type="TextureRect" parent="MainButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 57.0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopRight" type="TextureRect" parent="MainButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 58.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="MainButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="MainButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -58.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainButtons"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 59.0
+offset_right = 391.0
+offset_bottom = 518.0
+
+[node name="TopPattern" type="TextureRect" parent="MainButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("10_3pb76")
+
+[node name="Control4" type="Control" parent="MainButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainButtons/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Control" type="Control" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_OPTIONS"
+
+[node name="Control3" type="Control" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "conta"
+
+[node name="Control2" type="Control" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="MainButtons/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_fonts/font = ExtResource("1_rdm6y")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_QUIT"
+
+[node name="Control5" type="Control" parent="MainButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BottomPattern" type="TextureRect" parent="MainButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("11_o8hlc")
+
 [node name="Options" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -173,6 +287,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Back" type="Button" parent="Options/Label"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 423.0
 offset_right = 819.0
@@ -218,13 +333,13 @@ stream = ExtResource("7_ro8wv")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="MainButtons/Button" to="." method="_on_jogar_pressed"]
-[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_opcoes_pressed"]
-[connection signal="pressed" from="MainButtons/Button3" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="EnglishButton" to="." method="_on_english_button_pressed"]
 [connection signal="pressed" from="ItalianButton" to="." method="_on_italian_button_pressed"]
 [connection signal="pressed" from="FrenchButton" to="." method="_on_french_button_pressed"]
 [connection signal="pressed" from="GermanButton" to="." method="_on_german_button_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button3" to="." method="_on_sair_pressed"]
 [connection signal="pressed" from="Options/Label/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]
 [connection signal="toggled" from="Options/FullscreenControl" to="Options/FullscreenControl" method="_on_toggled"]
