@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkyq4410kblxk"
-path="res://.godot/imported/unitedkingdom.png-cf3efe816e86078c6fe65797d4b52aee.ctex"
+uid="uid://dmmtwbovyrhka"
+path="res://.godot/imported/saudi_arabia_32.png-22bc45be0155e3b7e79027de31861b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/global/UI/unitedkingdom.png"
-dest_files=["res://.godot/imported/unitedkingdom.png-cf3efe816e86078c6fe65797d4b52aee.ctex"]
+source_file="res://src/global/flags/saudi_arabia_32.png"
+dest_files=["res://.godot/imported/saudi_arabia_32.png-22bc45be0155e3b7e79027de31861b75.ctex"]
 
 [params]
 

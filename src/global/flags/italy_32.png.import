@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh30314bpv5fi"
-path="res://.godot/imported/portugal.png-3ae8f0e684e675f8278b8326c234eab1.ctex"
+uid="uid://bgfxxjlwjm8u5"
+path="res://.godot/imported/italy_32.png-b3448b5ac6611177fccac56a8c0dfc2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/global/UI/portugal.png"
-dest_files=["res://.godot/imported/portugal.png-3ae8f0e684e675f8278b8326c234eab1.ctex"]
+source_file="res://src/global/flags/italy_32.png"
+dest_files=["res://.godot/imported/italy_32.png-b3448b5ac6611177fccac56a8c0dfc2b.ctex"]
 
 [params]
 

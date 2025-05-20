@@ -4,6 +4,36 @@ const CONFIG_PATH := "user://settings.cfg"
 @onready var main_buttons: Panel = $MainButtons
 @onready var options: Panel = $Options
 @onready var language_dropdown: OptionButton = $LanguageDropdown
+@onready var flag_image: TextureRect = $FlagImage
+
+var language_flags = {
+	"ENGLISH": "res://src/global/flags/united_kingdom_32.png",
+	"FRENCH": "res://src/global/flags/france_32.png",
+	"SPANISH": "res://src/global/flags/spain_32.png",
+	"GERMAN": "res://src/global/flags/germany_32.png",
+	"ITALIAN": "res://src/global/flags/italy_32.png",
+	"PORTUGUESE": "res://src/global/flags/portugal_32.png",
+	"RUSSIAN": "res://src/global/flags/belarus_32.png",
+	"GREEK": "res://src/global/flags/greece_32.png",
+	"TURKISH": "res://src/global/flags/turkiye_32.png",
+	"DANISH": "res://src/global/flags/denmark_32.png",
+	"NORWEGIAN": "res://src/global/flags/norway_32.png",
+	"SWEDISH": "res://src/global/flags/sweden_32.png",
+	"DUTCH": "res://src/global/flags/netherlands_32.png",
+	"POLISH": "res://src/global/flags/poland_32.png",
+	"FINNISH": "res://src/global/flags/finland_32.png",
+	"JAPANESE": "res://src/global/flags/japan_32.png",
+	"SIMPLIFIED": "res://src/global/flags/china_32.png",
+	"TRADITIONAL": "res://src/global/flags/china_32.png",
+	"KOREAN": "res://src/global/flags/south_korea_32.png",
+	"CZECH": "res://src/global/flags/czech_32.png",
+	"HUNGARIAN": "res://src/global/flags/hungary_32.png",
+	"ROMANIAN": "res://src/global/flags/romania_32.png",
+	"THAI": "res://src/global/flags/thailand_32.png",
+	"BULGARIAN": "res://src/global/flags/bulgaria_32.png",
+	"HEBREW": "res://src/global/flags/belarus_32.png",
+	"ARABIC": "res://src/global/flags/saudi_arabia_32.png"
+}
 
 func save_language(lang: String) -> void:
 	var config = ConfigFile.new()
@@ -19,7 +49,6 @@ func load_language() -> String:
 func set_global_font_for_language(lang: String) -> void:
 	var theme = Theme.new()
 	var font: FontFile
-
 	match lang:
 		"JAPANESE":
 			font = load("res://src/global/fonts/NotoSansJP-Regular.ttf")
@@ -37,7 +66,6 @@ func set_global_font_for_language(lang: String) -> void:
 			font = load("res://src/global/fonts/NotoSansHebrew-Regular.ttf")
 		_:
 			font = load("res://src/global/fonts/NotoSans-Regular.ttf")
-
 	theme.set_default_font(font)
 	get_tree().root.theme = theme
 
@@ -86,7 +114,6 @@ func _ready() -> void:
 	language_dropdown.add_item("HEBREW")
 	language_dropdown.add_item("ARABIC")
 
-
 	# Set current language as selected
 	var idx := 0
 	for i in language_dropdown.item_count:
@@ -98,6 +125,7 @@ func _ready() -> void:
 	language_dropdown.connect("item_selected", Callable(self, "_on_language_dropdown_item_selected"))
 
 	_connect_buttons_for_click_sound(self)
+	_update_flag_image(lang)
 
 func _connect_buttons_for_click_sound(node):
 	for child in node.get_children():
@@ -131,3 +159,10 @@ func _on_language_dropdown_item_selected(index: int) -> void:
 	TranslationServer.set_locale(lang)
 	save_language(lang)
 	set_global_font_for_language(lang)
+	_update_flag_image(lang)
+
+func _update_flag_image(lang: String) -> void:
+	if language_flags.has(lang):
+		flag_image.texture = load(language_flags[lang])
+	else:
+		flag_image.texture = null # Or a default image

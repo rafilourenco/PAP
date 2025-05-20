@@ -5,8 +5,10 @@ var click_sound: AudioStreamPlayer
 
 func _ready():
     transition_sound = AudioStreamPlayer.new()
+    transition_sound.bus = "SFX"
     add_child(transition_sound)
     click_sound = AudioStreamPlayer.new()
+    click_sound.bus = "SFX"
     add_child(click_sound)
 
 func play_transition_sound(stream: AudioStream):

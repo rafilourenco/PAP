@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmld3q6i1l3nc"]
+[gd_scene load_steps=21 format=3 uid="uid://dmld3q6i1l3nc"]
 
 [ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
 [ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://boq2d2jwogvnw" path="res://src/global/UI/TopPatternPanel_01_33x15.png" id="9_o8hlc"]
 [ext_resource type="Texture2D" uid="uid://0c2br6lgg0ss" path="res://src/global/UI/TopPatternPanel_02_33x15.png" id="10_3pb76"]
 [ext_resource type="Texture2D" uid="uid://b076wk1pmp7ws" path="res://src/global/UI/BottomPatternPanel_119x17.png" id="11_o8hlc"]
+[ext_resource type="Script" uid="uid://drmsx53b6uyx0" path="res://src/global/vsync_control.gd" id="11_pvpef"]
+[ext_resource type="Texture2D" uid="uid://07gc05uum63" path="res://src/global/UI/TitleBox_64x16.png" id="12_1p6u7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hb1d"]
 texture = ExtResource("1_npkow")
@@ -56,7 +58,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3hb1d")
 
 [node name="Logo" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -244,56 +245,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
 
-[node name="TopLeft" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(64, 64)
-offset_left = -13.0
-offset_top = -7.0
-offset_right = 51.0
-offset_bottom = 57.0
-texture = ExtResource("5_o8hlc")
-
-[node name="TopRight" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -51.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 58.0
-grow_horizontal = 0
-texture = ExtResource("5_o8hlc")
-
-[node name="BottomLeft" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -13.0
-offset_top = -57.0
-offset_right = 51.0
-offset_bottom = 7.0
-grow_vertical = 0
-texture = ExtResource("5_o8hlc")
-
-[node name="BottomRight" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -58.0
-offset_right = 13.0
-offset_bottom = 6.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("5_o8hlc")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 0
 offset_left = 57.0
@@ -306,7 +257,7 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("9_o8hlc")
 expand_mode = 2
-stretch_mode = 4
+stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/VBoxContainer"]
 layout_mode = 2
@@ -316,7 +267,34 @@ layout_mode = 2
 text = "MENU_OPTIONS_FULLSCREEN"
 script = ExtResource("8_h32bd")
 
-[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/VBoxContainer"]
+[node name="VSync" type="CheckButton" parent="Options/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_OPTIONS_VSYNC"
+script = ExtResource("11_pvpef")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_OPTIONS_SOUND_VOLUME"
+
+[node name="AudioControl" type="HSlider" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_ro8wv")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_smjop")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_smjop")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("7_smjop")
+audio_bus_name = "Master"
+
+[node name="Label2" type="Label" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_OPTIONS_MUSIC_VOLUME"
+
+[node name="AudioControl2" type="HSlider" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_ro8wv")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_smjop")
@@ -326,6 +304,21 @@ step = 0.05
 value = 1.0
 script = ExtResource("7_smjop")
 audio_bus_name = "Music"
+
+[node name="Label3" type="Label" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU_OPTIONS_SFX_VOLUME"
+
+[node name="AudioControl3" type="HSlider" parent="Options/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_ro8wv")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_smjop")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_smjop")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("7_smjop")
+audio_bus_name = "SFX"
 
 [node name="Button3" type="Button" parent="Options/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -348,6 +341,86 @@ texture = ExtResource("11_o8hlc")
 expand_mode = 5
 stretch_mode = 4
 
+[node name="TopLeft" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(80, 80)
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 67.0
+offset_bottom = 73.0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopRight" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -67.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 74.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -73.0
+offset_right = 67.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -74.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="TextureRect" type="TextureRect" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = -32.0
+offset_right = 93.0
+offset_bottom = 57.0
+grow_horizontal = 2
+texture = ExtResource("12_1p6u7")
+
+[node name="Label" type="Label" parent="Options/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -21.0
+offset_right = 116.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "MENU_OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ro8wv")
 autoplay = true
@@ -358,10 +431,22 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 20.0
 
+[node name="FlagImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -63.0
+offset_right = 91.0
+grow_vertical = 0
+
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button3" to="." method="_on_sair_pressed"]
 [connection signal="toggled" from="Options/VBoxContainer/VBoxContainer/FullscreenControl" to="Options/VBoxContainer/VBoxContainer/FullscreenControl" method="_on_toggled"]
-[connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/AudioControl" to="Options/VBoxContainer/VBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/VBoxContainer/VSync" to="Options/VBoxContainer/VBoxContainer/VSync" method="_on_toggled"]
+[connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl2" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl2" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" method="_on_value_changed"]
 [connection signal="pressed" from="Options/VBoxContainer/VBoxContainer/Button3" to="." method="_on_back_options_pressed"]
 [connection signal="item_selected" from="LanguageDropdown" to="." method="_on_language_dropdown_item_selected"]
