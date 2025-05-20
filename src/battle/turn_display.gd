@@ -5,7 +5,8 @@ extends CanvasLayer
 
 func set_turn_info(is_player: bool, turn_number: int) -> void:
     if is_player:
-        turn_label.text = "PLAYER'S TURN"
+        turn_label.text = tr("GAME_PLAYER_TURN")
     else:
-        turn_label.text = "OPPONENT'S TURN"
-    turn_count_label.text = "Turn %d" % turn_number
+        turn_label.text = tr("GAME_OPPONENT_TURN")
+        
+    turn_count_label.text = "%s %d" % [tr("GAME_TURN"), turn_number]

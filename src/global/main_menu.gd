@@ -97,11 +97,22 @@ func _ready() -> void:
 
 	language_dropdown.connect("item_selected", Callable(self, "_on_language_dropdown_item_selected"))
 
+	_connect_buttons_for_click_sound(self)
+
+func _connect_buttons_for_click_sound(node):
+	for child in node.get_children():
+		if child is Button:
+			child.pressed.connect(_on_any_button_pressed)
+		_connect_buttons_for_click_sound(child)
+
+func _on_any_button_pressed():
+	AudioManager.play_click_sound(load("res://src/global/sounds/simple_click.mp3"))
+
 func _process(delta: float) -> void:
 	pass
 
 func _on_jogar_pressed() -> void:
-	AudioManager.play_transition_sound(load("res://src/global/whoosh_battle_sound.mp3"))
+	AudioManager.play_transition_sound(load("res://src/global/sounds/whoosh_battle_sound.mp3"))
 	get_tree().change_scene_to_file("res://src/battle/battle.tscn")
 
 func _on_opcoes_pressed() -> void:
