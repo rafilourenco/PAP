@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://f2fxybw5j22t"
-path="res://.godot/imported/RINGM___.TTF-9565ec3fde6de5054ea421964d1b05a8.fontdata"
+path="res://.godot/imported/RINGM___.TTF-319e564213858cdff3bf73646cc7b8e0.fontdata"
 
 [deps]
 
-source_file="res://src/global/UI/RINGM___.TTF"
-dest_files=["res://.godot/imported/RINGM___.TTF-9565ec3fde6de5054ea421964d1b05a8.fontdata"]
+source_file="res://src/global/fonts/RINGM___.TTF"
+dest_files=["res://.godot/imported/RINGM___.TTF-319e564213858cdff3bf73646cc7b8e0.fontdata"]
 
 [params]
 

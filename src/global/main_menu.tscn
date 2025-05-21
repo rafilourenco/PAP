@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmld3q6i1l3nc"]
+[gd_scene load_steps=26 format=3 uid="uid://dmld3q6i1l3nc"]
 
 [ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
 [ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
 [ext_resource type="Texture2D" uid="uid://dhn5s78ijbve7" path="res://src/global/UI/Button_52x14.png" id="2_glcjn"]
-[ext_resource type="Texture2D" uid="uid://4komnfcdamey" path="res://src/global/UI/logo-fellowship.png" id="4_ysmy1"]
+[ext_resource type="Texture2D" uid="uid://ci5dksam11or3" path="res://src/global/UI/logo_fellowship3.png" id="4_pvpef"]
 [ext_resource type="Texture2D" uid="uid://wbfdqqwo3av5" path="res://src/global/UI/CornerKnot_14x14.png" id="5_o8hlc"]
+[ext_resource type="Script" uid="uid://keujau0mlj0o" path="res://src/global/level_select.gd" id="6_0rjlq"]
+[ext_resource type="Texture2D" uid="uid://bi3piqtlyt1dk" path="res://src/global/UI/CharacterBox_56x57.png" id="7_43pur"]
 [ext_resource type="AudioStream" uid="uid://bce64ev2nnydf" path="res://src/global/The Shire.wav" id="7_ro8wv"]
 [ext_resource type="Script" uid="uid://cg5hac83wies3" path="res://src/global/audio_control.gd" id="7_smjop"]
+[ext_resource type="Texture2D" uid="uid://cndr1866p2eta" path="res://src/global/UI/QuitIcon.png" id="7_x44tj"]
 [ext_resource type="Script" uid="uid://b6x4lma1c8ur8" path="res://src/global/fullscreen_control.gd" id="8_h32bd"]
 [ext_resource type="Texture2D" uid="uid://b7hjg4g6swftb" path="res://src/global/UI/RectangleBox_96x96.png" id="9_h32bd"]
 [ext_resource type="Texture2D" uid="uid://boq2d2jwogvnw" path="res://src/global/UI/TopPatternPanel_01_33x15.png" id="9_o8hlc"]
@@ -19,17 +22,27 @@
 texture = ExtResource("1_npkow")
 modulate_color = Color(0.354063, 0.354063, 0.354063, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj7ps"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvpef"]
 texture = ExtResource("9_h32bd")
-texture_margin_left = 4.0
+texture_margin_left = 5.0
 texture_margin_top = 4.0
-texture_margin_right = 4.0
+texture_margin_right = 5.0
 texture_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2bwi"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0rjlq"]
+texture = ExtResource("7_43pur")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0n411"]
 texture = ExtResource("2_glcjn")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2bwi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bj7ps"]
+texture = ExtResource("9_h32bd")
+texture_margin_left = 4.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ro8wv"]
 color = Color(1, 1, 1, 1)
@@ -57,19 +70,346 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3hb1d")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.303646
+anchor_top = 0.0212963
+anchor_right = 0.303646
+anchor_bottom = 0.0212963
+offset_left = 18.0
+offset_top = -1.0
+offset_right = 82.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(11.1651, 6.05618)
+texture = ExtResource("12_1p6u7")
+
 [node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 644.0
+offset_top = -116.0
+offset_right = 1668.0
+offset_bottom = 908.0
+scale = Vector2(0.636876, 0.518875)
+texture = ExtResource("4_pvpef")
+
+[node name="LevelSelect" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 346.0
+offset_right = 1442.0
+offset_bottom = 910.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pvpef")
+script = ExtResource("6_0rjlq")
+
+[node name="TopLeft" type="TextureRect" parent="LevelSelect"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 57.0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopRight" type="TextureRect" parent="LevelSelect"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 58.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="LevelSelect"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="LevelSelect"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -58.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -441.0
-offset_top = 10.0
-offset_right = 430.0
-offset_bottom = 292.0
+offset_left = -132.0
+offset_top = -29.0
+offset_right = 132.0
+offset_bottom = 60.0
 grow_horizontal = 2
-texture = ExtResource("4_ysmy1")
+texture = ExtResource("12_1p6u7")
+
+[node name="Label" type="Label" parent="LevelSelect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -21.0
+offset_right = 116.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "MENU_LABEL_LEVELS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Levels" type="HBoxContainer" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 228.0
+offset_right = 818.0
+offset_bottom = 313.0
+
+[node name="Level1" type="PanelContainer" parent="LevelSelect/Levels"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0rjlq")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelSelect/Levels/Level1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/Levels/Level1/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_LEVEL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/Levels/Level1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/Levels/Level1/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/Levels/Level1/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect/Levels/Level1/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="Button" type="Button" parent="LevelSelect/Levels/Level1/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Level2" type="PanelContainer" parent="LevelSelect/Levels"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0rjlq")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelSelect/Levels/Level2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/Levels/Level2/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_LEVEL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/Levels/Level2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/Levels/Level2/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/Levels/Level2/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect/Levels/Level2/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="Button" type="Button" parent="LevelSelect/Levels/Level2/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Level3" type="PanelContainer" parent="LevelSelect/Levels"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0rjlq")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelSelect/Levels/Level3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/Levels/Level3/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_LEVEL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/Levels/Level3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/Levels/Level3/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/Levels/Level3/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect/Levels/Level3/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="Button" type="Button" parent="LevelSelect/Levels/Level3/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Level4" type="PanelContainer" parent="LevelSelect/Levels"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0rjlq")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelSelect/Levels/Level4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/Levels/Level4/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_LEVEL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/Levels/Level4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/Levels/Level4/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/Levels/Level4/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect/Levels/Level4/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="Button" type="Button" parent="LevelSelect/Levels/Level4/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Level5" type="PanelContainer" parent="LevelSelect/Levels"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0rjlq")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelSelect/Levels/Level5"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelSelect/Levels/Level5/HBoxContainer"]
+layout_mode = 2
+text = "MENU_LABEL_LEVEL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/Levels/Level5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/Levels/Level5/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect2" type="TextureRect" parent="LevelSelect/Levels/Level5/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="TextureRect3" type="TextureRect" parent="LevelSelect/Levels/Level5/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_x44tj")
+
+[node name="Button" type="Button" parent="LevelSelect/Levels/Level5/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_PLAY"
+
+[node name="Button3" type="Button" parent="LevelSelect"]
+offset_left = 338.0
+offset_top = 430.0
+offset_right = 754.0
+offset_bottom = 530.0
+scale = Vector2(0.69987, 0.821814)
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_BACK"
 
 [node name="MainButtons" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,7 +502,7 @@ theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
 theme_override_font_sizes/font_size = 35
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
@@ -231,6 +571,7 @@ layout_mode = 2
 texture = ExtResource("11_o8hlc")
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -247,10 +588,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 42.0
-offset_right = 817.0
-offset_bottom = 582.0
+offset_left = 66.0
+offset_top = 48.0
+offset_right = 813.0
+offset_bottom = 570.0
 
 [node name="TopPattern" type="TextureRect" parent="Options/VBoxContainer"]
 layout_mode = 2
@@ -320,19 +661,9 @@ value = 1.0
 script = ExtResource("7_smjop")
 audio_bus_name = "SFX"
 
-[node name="Button3" type="Button" parent="Options/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="Control4" type="Control" parent="Options/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
-theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
-theme_override_font_sizes/font_size = 35
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
-theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
-theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
-text = "MENU_LABEL_BACK"
 
 [node name="BottomPattern" type="TextureRect" parent="Options/VBoxContainer"]
 layout_mode = 2
@@ -341,65 +672,33 @@ texture = ExtResource("11_o8hlc")
 expand_mode = 5
 stretch_mode = 4
 
-[node name="TopLeft" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(80, 80)
-offset_left = -13.0
-offset_top = -7.0
-offset_right = 67.0
-offset_bottom = 73.0
-texture = ExtResource("5_o8hlc")
-
-[node name="TopRight" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -67.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 74.0
-grow_horizontal = 0
-texture = ExtResource("5_o8hlc")
-
-[node name="BottomLeft" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -13.0
-offset_top = -73.0
-offset_right = 67.0
-offset_bottom = 7.0
-grow_vertical = 0
-texture = ExtResource("5_o8hlc")
-
-[node name="BottomRight" type="TextureRect" parent="Options"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -67.0
-offset_top = -74.0
-offset_right = 13.0
-offset_bottom = 6.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("5_o8hlc")
+[node name="Button3" type="Button" parent="Options"]
+layout_mode = 2
+offset_left = 326.0
+offset_top = 459.0
+offset_right = 650.0
+offset_bottom = 559.0
+scale = Vector2(0.69987, 0.821814)
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_BACK"
 
 [node name="TextureRect" type="TextureRect" parent="Options"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_top = -32.0
-offset_right = 93.0
-offset_bottom = 57.0
+offset_left = -132.0
+offset_top = -29.0
+offset_right = 132.0
+offset_bottom = 60.0
 grow_horizontal = 2
 texture = ExtResource("12_1p6u7")
 
@@ -421,6 +720,56 @@ text = "MENU_OPTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TopLeft" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 57.0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopRight" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 58.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="Options"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -58.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ro8wv")
 autoplay = true
@@ -440,6 +789,12 @@ offset_top = -63.0
 offset_right = 91.0
 grow_vertical = 0
 
+[connection signal="pressed" from="LevelSelect/Levels/Level1/HBoxContainer/Button" to="LevelSelect" method="_on_level1_play_pressed"]
+[connection signal="pressed" from="LevelSelect/Levels/Level2/HBoxContainer/Button" to="LevelSelect" method="_on_level1_play_pressed"]
+[connection signal="pressed" from="LevelSelect/Levels/Level3/HBoxContainer/Button" to="LevelSelect" method="_on_level1_play_pressed"]
+[connection signal="pressed" from="LevelSelect/Levels/Level4/HBoxContainer/Button" to="LevelSelect" method="_on_level1_play_pressed"]
+[connection signal="pressed" from="LevelSelect/Levels/Level5/HBoxContainer/Button" to="LevelSelect" method="_on_level1_play_pressed"]
+[connection signal="pressed" from="LevelSelect/Button3" to="." method="_on_back_options_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button3" to="." method="_on_sair_pressed"]
@@ -448,5 +803,5 @@ grow_vertical = 0
 [connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl2" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl2" method="_on_value_changed"]
 [connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" method="_on_value_changed"]
-[connection signal="pressed" from="Options/VBoxContainer/VBoxContainer/Button3" to="." method="_on_back_options_pressed"]
+[connection signal="pressed" from="Options/Button3" to="." method="_on_back_options_pressed"]
 [connection signal="item_selected" from="LanguageDropdown" to="." method="_on_language_dropdown_item_selected"]

@@ -5,6 +5,7 @@ const CONFIG_PATH := "user://settings.cfg"
 @onready var options: Panel = $Options
 @onready var language_dropdown: OptionButton = $LanguageDropdown
 @onready var flag_image: TextureRect = $FlagImage
+@onready var level_select: Panel = $LevelSelect
 
 var language_flags = {
 	"ENGLISH": "res://src/global/flags/united_kingdom_32.png",
@@ -85,6 +86,7 @@ func _ready() -> void:
 	load_window_mode()
 	main_buttons.visible = true
 	options.visible = false
+	level_select.visible = false
 
 	language_dropdown.clear()
 	language_dropdown.add_item("ENGLISH")
@@ -140,8 +142,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_jogar_pressed() -> void:
-	AudioManager.play_transition_sound(load("res://src/global/sounds/whoosh_battle_sound.mp3"))
-	get_tree().change_scene_to_file("res://src/battle/battle.tscn")
+	# AudioManager.play_transition_sound(load("res://src/global/sounds/whoosh_battle_sound.mp3"))
+	# get_tree().change_scene_to_file("res://src/battle/battle.tscn")
+	main_buttons.visible = false
+	level_select.visible = true
 
 func _on_opcoes_pressed() -> void:
 	main_buttons.visible = false
@@ -153,6 +157,7 @@ func _on_sair_pressed() -> void:
 func _on_back_options_pressed() -> void:
 	main_buttons.visible = true
 	options.visible = false
+	level_select.visible = false
 
 func _on_language_dropdown_item_selected(index: int) -> void:
 	var lang = language_dropdown.get_item_text(index)
