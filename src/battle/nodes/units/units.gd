@@ -167,13 +167,6 @@ func _begin_turn() -> void:
 	has_attacked = false
 	has_moved = false
 
-	# Camera follow logic
-	if not current_unit.moved_to_tile.is_connected(_on_unit_moved_to_tile):
-		current_unit.moved_to_tile.connect(_on_unit_moved_to_tile)
-	var camera = get_tree().current_scene.get_node("Camera2D")
-	if camera:
-		camera.global_position = current_unit.global_position
-
 	# AI or player turn
 	if current_group.name == "opponent":
 		await _opponent_ai_turn()
@@ -181,17 +174,6 @@ func _begin_turn() -> void:
 		_update_paths()
 	_update_turn_labels()
 
-func _on_unit_moved_to_tile(pos: Vector2) -> void:
-	# Smooth camera follow when unit moves
-	var camera = get_tree().current_scene.get_node("Camera2D")
-	if camera:
-		if camera.has_meta("move_tween"):
-			var prev_tween = camera.get_meta("move_tween")
-			if is_instance_valid(prev_tween):
-				prev_tween.kill()
-		var tween = create_tween()
-		tween.tween_property(camera, "global_position", pos, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		camera.set_meta("move_tween", tween)
 
 func _opponent_ai_turn() -> void:
 	# Simple AI: move toward and attack the closest player unit

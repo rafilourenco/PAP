@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgvt5kam3xp5p"]
+[gd_scene load_steps=16 format=3 uid="uid://bgvt5kam3xp5p"]
 
 [ext_resource type="Script" uid="uid://cr7w03l1kbnt6" path="res://src/battle/battle.gd" id="1_jy87w"]
 [ext_resource type="Texture2D" uid="uid://j023jaf1tef6" path="res://src/maps/terrain/Tiles/Tileset.png" id="1_mnkh7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://di37b3hbh35g7" path="res://src/unit/definitions/mage.tres" id="8_pd852"]
 [ext_resource type="Script" uid="uid://cqwnvnqal4bdo" path="res://src/battle/fp_scounter.gd" id="9_ns36m"]
 [ext_resource type="Script" uid="uid://7hw8dgnu7sk6" path="res://src/battle/turn_display.gd" id="10_jy87w"]
+[ext_resource type="PackedScene" uid="uid://dmp5ky2tblhyc" path="res://src/global/pause_menu.tscn" id="12_t4bqi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfeec"]
 texture = ExtResource("1_mnkh7")
@@ -357,7 +358,7 @@ terrain_set_0/terrain_1/color = Color(0.366978, 0.486482, 0.234082, 1)
 sources/0 = SubResource("TileSetAtlasSource_yfeec")
 sources/1 = SubResource("TileSetAtlasSource_yynoh")
 
-[node name="Scene1" type="Node2D"]
+[node name="Scene2" type="Node2D"]
 script = ExtResource("1_jy87w")
 
 [node name="tiles" type="TileMap" parent="."]
@@ -425,3 +426,15 @@ offset_bottom = 39.0
 offset_top = 54.0
 offset_right = 40.0
 offset_bottom = 77.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_t4bqi")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = 91.0
+offset_right = 200.0
+offset_bottom = 91.0
+scale = Vector2(0.209023, 0.214081)
