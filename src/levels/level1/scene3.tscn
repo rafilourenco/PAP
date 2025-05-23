@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqdimi76tdaoo"]
+[gd_scene load_steps=17 format=3 uid="uid://cqdimi76tdaoo"]
 
 [ext_resource type="Script" uid="uid://cr7w03l1kbnt6" path="res://src/battle/battle.gd" id="1_jy87w"]
 [ext_resource type="Texture2D" uid="uid://j023jaf1tef6" path="res://src/maps/terrain/Tiles/Tileset.png" id="1_mnkh7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cqwnvnqal4bdo" path="res://src/battle/fp_scounter.gd" id="9_ns36m"]
 [ext_resource type="Script" uid="uid://7hw8dgnu7sk6" path="res://src/battle/turn_display.gd" id="10_jy87w"]
 [ext_resource type="PackedScene" uid="uid://dmp5ky2tblhyc" path="res://src/global/pause_menu.tscn" id="12_153h6"]
+[ext_resource type="Texture2D" uid="uid://74mujknew6dn" path="res://src/global/UI/settingsicon.png" id="13_jltqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfeec"]
 texture = ExtResource("1_mnkh7")
@@ -438,3 +439,16 @@ offset_top = 91.0
 offset_right = 200.0
 offset_bottom = 91.0
 scale = Vector2(0.209023, 0.214081)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsIcon" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1840.0
+offset_right = 1880.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("13_jltqh")
+texture_pressed = ExtResource("13_jltqh")
+texture_hover = ExtResource("13_jltqh")
+texture_focused = ExtResource("13_jltqh")
+stretch_mode = 3

@@ -26,6 +26,7 @@ func _ready() -> void:
 func start_battle() -> void:
 	current_group = groups[0]
 	_begin_turn()
+	PlayerStats.add_game_played() # <-- Add this line
 
 func get_active_units() -> Array[Unit]:
 	# Return all units with health > 0

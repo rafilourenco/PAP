@@ -3,8 +3,8 @@ extends Control
 const CONFIG_PATH := "user://settings.cfg"
 @onready var main_buttons: Panel = $MainButtons
 @onready var options: Panel = $Options
-@onready var language_dropdown: OptionButton = $LanguageDropdown
-@onready var flag_image: TextureRect = $FlagImage
+@onready var language_dropdown: OptionButton = find_child("LanguageDropdown", true, false)
+@onready var flag_image: TextureRect = find_child("FlagImage", true, false)
 @onready var level_select: Panel = $LevelSelect
 
 var language_flags = {
@@ -14,7 +14,7 @@ var language_flags = {
 	"GERMAN": "res://src/global/flags/germany_32.png",
 	"ITALIAN": "res://src/global/flags/italy_32.png",
 	"PORTUGUESE": "res://src/global/flags/portugal_32.png",
-	"RUSSIAN": "res://src/global/flags/belarus_32.png",
+	"RUSSIAN": "res://src/global/flags/russia_32.png",
 	"GREEK": "res://src/global/flags/greece_32.png",
 	"TURKISH": "res://src/global/flags/turkiye_32.png",
 	"DANISH": "res://src/global/flags/denmark_32.png",
@@ -32,7 +32,7 @@ var language_flags = {
 	"ROMANIAN": "res://src/global/flags/romania_32.png",
 	"THAI": "res://src/global/flags/thailand_32.png",
 	"BULGARIAN": "res://src/global/flags/bulgaria_32.png",
-	"HEBREW": "res://src/global/flags/belarus_32.png",
+	"HEBREW": "res://src/global/flags/israel_32.png",
 	"ARABIC": "res://src/global/flags/saudi_arabia_32.png"
 }
 
@@ -80,6 +80,8 @@ func load_window_mode() -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _ready() -> void:
+	PlayerStats.load_stats()
+	PlayerStats.send_stats_to_server() # <-- Add this line
 	var lang = load_language()
 	TranslationServer.set_locale(lang)
 	set_global_font_for_language(lang)

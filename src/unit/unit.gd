@@ -107,4 +107,6 @@ func _set_health(value: int) -> void:
 	if health == 0:
 		sprite.play('death')
 		await sprite.animation_finished
-		queue_free()  # Remove the unit from the scene
+		if get_parent().name == "opponent":
+			PlayerStats.add_unit_killed()
+		queue_free()

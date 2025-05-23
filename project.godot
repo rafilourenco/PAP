@@ -21,6 +21,7 @@ Config="*res://src/global/config.gd"
 Navigation="*res://src/global/navigation.gd"
 EventBus="*res://src/global/event_bus.gd"
 AudioManager="*res://src/global/audio_manager.gd"
+PlayerStats="*res://src/global/player_stats.gd"
 
 [display]
 
@@ -30,10 +31,6 @@ window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://src/global/UI/use162.png"
 mouse_cursor/custom_image_hotspot=Vector2(25, 2)
-
-[gui]
-
-theme/custom_font="uid://bpjyibjn6iecr"
 
 [input]
 

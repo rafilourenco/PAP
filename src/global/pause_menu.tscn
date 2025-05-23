@@ -55,16 +55,17 @@ grow_vertical = 2
 script = ExtResource("1_3bgfo")
 
 [node name="MainPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -203.0
-offset_right = 221.0
-offset_bottom = 375.0
+offset_left = -220.5
+offset_top = -289.0
+offset_right = 220.5
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_47ie6")
@@ -216,17 +217,16 @@ layout_mode = 2
 texture = ExtResource("5_eke44")
 
 [node name="OptionsPanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -445.0
-offset_top = -258.0
-offset_right = 437.0
-offset_bottom = 373.0
+offset_left = -441.0
+offset_top = -384.0
+offset_right = 542.0
+offset_bottom = 316.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_h3oie")
@@ -235,8 +235,8 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_h3oie")
 layout_mode = 0
 offset_left = 66.0
 offset_top = 48.0
-offset_right = 813.0
-offset_bottom = 570.0
+offset_right = 916.0
+offset_bottom = 645.0
 
 [node name="TopPattern" type="TextureRect" parent="OptionsPanel/VBoxContainer"]
 layout_mode = 2
@@ -250,11 +250,13 @@ layout_mode = 2
 
 [node name="FullscreenControl" type="CheckButton" parent="OptionsPanel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "MENU_OPTIONS_FULLSCREEN"
 script = ExtResource("8_e74x8")
 
 [node name="VSync" type="CheckButton" parent="OptionsPanel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "MENU_OPTIONS_VSYNC"
 script = ExtResource("9_5f10u")
 
@@ -263,6 +265,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "MENU_OPTIONS_SOUND_VOLUME"
 
 [node name="AudioControl" type="HSlider" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -278,6 +281,7 @@ audio_bus_name = "Master"
 
 [node name="Label2" type="Label" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "MENU_OPTIONS_MUSIC_VOLUME"
 
 [node name="AudioControl2" type="HSlider" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -293,6 +297,7 @@ audio_bus_name = "Music"
 
 [node name="Label3" type="Label" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 25
 text = "MENU_OPTIONS_SFX_VOLUME"
 
 [node name="AudioControl3" type="HSlider" parent="OptionsPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -305,6 +310,26 @@ step = 0.05
 value = 1.0
 script = ExtResource("10_c157a")
 audio_bus_name = "SFX"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "MENU_LABEL_LANGUAGE"
+
+[node name="Control" type="Control" parent="OptionsPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="FlagImage" type="TextureRect" parent="OptionsPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="LanguageDropdown" type="OptionButton" parent="OptionsPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="Control4" type="Control" parent="OptionsPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)

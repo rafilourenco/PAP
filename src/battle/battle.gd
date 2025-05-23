@@ -58,3 +58,8 @@ func _on_options_requested():
 	# Show the options menu (assuming you have it as a scene or node)
 	var options_menu = get_node("/root/MAIN/Options_Menu") # Adjust path as needed
 	options_menu.visible = true
+
+
+func _on_SettingsButton_pressed() -> void:
+	_show_pause_menu()
+	print("Settings button pressed")
