@@ -98,8 +98,10 @@ func _show_victory_screen(player_dead: bool, opponent_dead: bool) -> void:
 	var msg := ""
 	if player_dead and not opponent_dead:
 		msg = "GAME_STATUS_YOU_LOSE"
+		PlayerStats.add_battle_lost()
 	elif opponent_dead and not player_dead:
 		msg = "GAME_STATUS_YOU_WIN"
+		PlayerStats.add_battle_won()
 	else:
 		msg = "Draw!"
 	var popup := AcceptDialog.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dmld3q6i1l3nc"]
+[gd_scene load_steps=27 format=3 uid="uid://dmld3q6i1l3nc"]
 
 [ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
 [ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b076wk1pmp7ws" path="res://src/global/UI/BottomPatternPanel_119x17.png" id="11_o8hlc"]
 [ext_resource type="Script" uid="uid://drmsx53b6uyx0" path="res://src/global/vsync_control.gd" id="11_pvpef"]
 [ext_resource type="Texture2D" uid="uid://07gc05uum63" path="res://src/global/UI/TitleBox_64x16.png" id="12_1p6u7"]
+[ext_resource type="Script" uid="uid://dl2ke0l0mofv6" path="res://src/global/login_panel.gd" id="17_g5skn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hb1d"]
 texture = ExtResource("1_npkow")
@@ -587,6 +588,7 @@ layout_mode = 2
 texture = ExtResource("11_o8hlc")
 
 [node name="Options" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -805,6 +807,45 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("5_o8hlc")
 
+[node name="LoginPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 356.0
+offset_right = 1182.0
+offset_bottom = 921.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
+script = ExtResource("17_g5skn")
+
+[node name="EmailLineEdit" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 67.0
+offset_right = 323.0
+offset_bottom = 157.0
+
+[node name="PasswordLineEdit" type="LineEdit" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 211.0
+offset_right = 326.0
+offset_bottom = 261.0
+secret = true
+
+[node name="LoginButton" type="Button" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 341.0
+offset_right = 283.0
+offset_bottom = 387.0
+text = "login"
+
+[node name="ErrorLabel" type="Label" parent="LoginPanel"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 447.0
+offset_right = 262.0
+offset_bottom = 489.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ro8wv")
 autoplay = true
@@ -818,6 +859,7 @@ bus = &"Music"
 [connection signal="pressed" from="LevelSelect/Button3" to="." method="_on_back_options_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button2" to="." method="_on_opcoes_pressed"]
+[connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button4" to="." method="_on_account_pressed"]
 [connection signal="pressed" from="MainButtons/VBoxContainer/VBoxContainer/Button3" to="." method="_on_sair_pressed"]
 [connection signal="toggled" from="Options/VBoxContainer/VBoxContainer/FullscreenControl" to="Options/VBoxContainer/VBoxContainer/FullscreenControl" method="_on_toggled"]
 [connection signal="toggled" from="Options/VBoxContainer/VBoxContainer/VSync" to="Options/VBoxContainer/VBoxContainer/VSync" method="_on_toggled"]

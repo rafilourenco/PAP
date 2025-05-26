@@ -109,4 +109,6 @@ func _set_health(value: int) -> void:
 		await sprite.animation_finished
 		if get_parent().name == "opponent":
 			PlayerStats.add_unit_killed()
+		elif get_parent().name == "player":
+			PlayerStats.add_player_unit_lost()
 		queue_free()

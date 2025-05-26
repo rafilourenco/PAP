@@ -6,6 +6,7 @@ const CONFIG_PATH := "user://settings.cfg"
 @onready var language_dropdown: OptionButton = find_child("LanguageDropdown", true, false)
 @onready var flag_image: TextureRect = find_child("FlagImage", true, false)
 @onready var level_select: Panel = $LevelSelect
+@onready var login_panel = $LoginPanel
 
 var language_flags = {
 	"ENGLISH": "res://src/global/flags/united_kingdom_32.png",
@@ -158,6 +159,12 @@ func _on_sair_pressed() -> void:
 
 func _on_back_options_pressed() -> void:
 	main_buttons.visible = true
+	options.visible = false
+	level_select.visible = false
+
+func _on_account_pressed():
+	login_panel.visible = true
+	main_buttons.visible = false
 	options.visible = false
 	level_select.visible = false
 

@@ -22,6 +22,7 @@ Navigation="*res://src/global/navigation.gd"
 EventBus="*res://src/global/event_bus.gd"
 AudioManager="*res://src/global/audio_manager.gd"
 PlayerStats="*res://src/global/player_stats.gd"
+Global="*res://src/global/Global.gd"
 
 [display]
 
