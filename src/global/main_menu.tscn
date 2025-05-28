@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dmld3q6i1l3nc"]
+[gd_scene load_steps=28 format=3 uid="uid://dmld3q6i1l3nc"]
 
 [ext_resource type="Script" uid="uid://c6vs4hdy5luk8" path="res://src/global/main_menu.gd" id="1_hikmi"]
 [ext_resource type="Texture2D" uid="uid://h70jhxbyl6xl" path="res://src/global/UI/fundo.png" id="1_npkow"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://drmsx53b6uyx0" path="res://src/global/vsync_control.gd" id="11_pvpef"]
 [ext_resource type="Texture2D" uid="uid://07gc05uum63" path="res://src/global/UI/TitleBox_64x16.png" id="12_1p6u7"]
 [ext_resource type="Script" uid="uid://dl2ke0l0mofv6" path="res://src/global/login_panel.gd" id="17_g5skn"]
+[ext_resource type="Script" uid="uid://dbldf1m1uo6qg" path="res://src/global/account_panel.gd" id="18_gncxw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hb1d"]
 texture = ExtResource("1_npkow")
@@ -572,7 +573,7 @@ theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121
 theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
 theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
 theme_override_font_sizes/font_size = 35
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p2bwi")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
@@ -607,7 +608,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
 layout_mode = 0
 offset_left = 66.0
 offset_top = 48.0
-offset_right = 813.0
+offset_right = 815.0
 offset_bottom = 570.0
 
 [node name="TopPattern" type="TextureRect" parent="Options/VBoxContainer"]
@@ -808,43 +809,282 @@ grow_vertical = 0
 texture = ExtResource("5_o8hlc")
 
 [node name="LoginPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 735.0
-offset_top = 356.0
-offset_right = 1182.0
-offset_bottom = 921.0
+offset_left = 740.0
+offset_top = 337.0
+offset_right = 1181.0
+offset_bottom = 915.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
 script = ExtResource("17_g5skn")
 
-[node name="EmailLineEdit" type="LineEdit" parent="LoginPanel"]
+[node name="TopLeft" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
-offset_left = 127.0
-offset_top = 67.0
-offset_right = 323.0
-offset_bottom = 157.0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 57.0
+texture = ExtResource("5_o8hlc")
 
-[node name="PasswordLineEdit" type="LineEdit" parent="LoginPanel"]
-layout_mode = 0
-offset_left = 119.0
-offset_top = 211.0
-offset_right = 326.0
-offset_bottom = 261.0
+[node name="TopRight" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 58.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -58.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopPattern" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 398.0
+offset_bottom = 78.0
+texture = ExtResource("10_3pb76")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoginPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -159.0
+offset_right = 133.5
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EmailLineEdit" type="LineEdit" parent="LoginPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "MENU_LOGIN_EMAIL"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="LoginPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+placeholder_text = "MENU_LOGIN_PASSWORD"
 secret = true
 
-[node name="LoginButton" type="Button" parent="LoginPanel"]
-layout_mode = 0
-offset_left = 168.0
-offset_top = 341.0
-offset_right = 283.0
-offset_bottom = 387.0
-text = "login"
+[node name="LoginButton" type="Button" parent="LoginPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LOGIN"
 
-[node name="ErrorLabel" type="Label" parent="LoginPanel"]
+[node name="ErrorLabel" type="Label" parent="LoginPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="LoginPanel"]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 447.0
-offset_right = 262.0
-offset_bottom = 489.0
+offset_left = 59.0
+offset_top = 382.0
+offset_right = 389.0
+offset_bottom = 453.0
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.596078, 0.121569, 1)
+theme_override_colors/font_pressed_color = Color(0.812725, 3.77826e-06, 5.77569e-07, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/focus = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0n411")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0n411")
+text = "MENU_LABEL_BACK"
+
+[node name="BottomPattern" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+offset_left = 47.0
+offset_top = 459.0
+offset_right = 402.0
+offset_bottom = 515.0
+texture = ExtResource("11_o8hlc")
+
+[node name="BottomPattern2" type="TextureRect" parent="LoginPanel"]
+custom_minimum_size = Vector2(0, 35)
+offset_left = 47.0
+offset_top = 459.0
+offset_right = 402.0
+offset_bottom = 515.0
+texture = ExtResource("11_o8hlc")
+
+[node name="AccountPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 740.0
+offset_top = 337.0
+offset_right = 1181.0
+offset_bottom = 915.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bj7ps")
+script = ExtResource("18_gncxw")
+
+[node name="TopPattern" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(0, 35)
+offset_left = 50.0
+offset_top = 38.0
+offset_right = 398.0
+offset_bottom = 78.0
+texture = ExtResource("10_3pb76")
+
+[node name="TopLeft" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 51.0
+offset_bottom = 57.0
+texture = ExtResource("5_o8hlc")
+
+[node name="TopRight" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 58.0
+grow_horizontal = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomLeft" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 51.0
+offset_bottom = 7.0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="BottomRight" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -58.0
+offset_right = 13.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_o8hlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AccountPanel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 88.0
+offset_right = 402.0
+offset_bottom = 496.0
+
+[node name="NameLabel" type="Label" parent="AccountPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="EmailLabel" type="Label" parent="AccountPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="AccountPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Play Time:"
+
+[node name="PlayTimeValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Games Played:"
+
+[node name="GamesPlayedValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Units Killed:"
+
+[node name="UnitsKilledValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Battles Won:"
+
+[node name="BattlesWonValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Battles Lost:"
+
+[node name="BattlesLostValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Player Units Lost:"
+
+[node name="PlayerUnitsLostValue" type="Label" parent="AccountPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BottomPattern" type="TextureRect" parent="AccountPanel"]
+custom_minimum_size = Vector2(0, 35)
+offset_left = 47.0
+offset_top = 488.0
+offset_right = 394.0
+offset_bottom = 523.0
+texture = ExtResource("11_o8hlc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ro8wv")
@@ -868,3 +1108,5 @@ bus = &"Music"
 [connection signal="value_changed" from="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" to="Options/VBoxContainer/VBoxContainer/VBoxContainer/AudioControl3" method="_on_value_changed"]
 [connection signal="item_selected" from="Options/VBoxContainer/VBoxContainer/HBoxContainer/LanguageDropdown" to="." method="_on_language_dropdown_item_selected"]
 [connection signal="pressed" from="Options/Button3" to="." method="_on_back_options_pressed"]
+[connection signal="pressed" from="LoginPanel/VBoxContainer/LoginButton" to="LoginPanel" method="_on_login_button_pressed"]
+[connection signal="pressed" from="LoginPanel/Button" to="." method="_on_back_options_pressed"]

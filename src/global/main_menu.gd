@@ -90,6 +90,7 @@ func _ready() -> void:
 	main_buttons.visible = true
 	options.visible = false
 	level_select.visible = false
+	login_panel	.visible = false
 
 	language_dropdown.clear()
 	language_dropdown.add_item("ENGLISH")
@@ -149,6 +150,7 @@ func _on_jogar_pressed() -> void:
 	# get_tree().change_scene_to_file("res://src/battle/battle.tscn")
 	main_buttons.visible = false
 	level_select.visible = true
+	login_panel	.visible = false
 
 func _on_opcoes_pressed() -> void:
 	main_buttons.visible = false
@@ -161,12 +163,22 @@ func _on_back_options_pressed() -> void:
 	main_buttons.visible = true
 	options.visible = false
 	level_select.visible = false
+	login_panel	.visible = false
 
 func _on_account_pressed():
-	login_panel.visible = true
-	main_buttons.visible = false
-	options.visible = false
-	level_select.visible = false
+	if Global.player_user_id != null:
+		# User is logged in, show account panel
+		$AccountPanel.visible = true
+		$AccountPanel.show_account_details()
+		main_buttons.visible = false
+		options.visible = false
+		level_select.visible = false
+	else:
+		# Not logged in, show login panel
+		login_panel.visible = true
+		main_buttons.visible = false
+		options.visible = false
+		level_select.visible = false
 
 func _on_language_dropdown_item_selected(index: int) -> void:
 	var lang = language_dropdown.get_item_text(index)
