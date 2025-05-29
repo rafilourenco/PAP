@@ -946,6 +946,7 @@ texture = ExtResource("11_o8hlc")
 
 [node name="BottomPattern2" type="TextureRect" parent="LoginPanel"]
 custom_minimum_size = Vector2(0, 35)
+layout_mode = 0
 offset_left = 47.0
 offset_top = 459.0
 offset_right = 402.0
@@ -964,6 +965,7 @@ script = ExtResource("18_gncxw")
 
 [node name="TopPattern" type="TextureRect" parent="AccountPanel"]
 custom_minimum_size = Vector2(0, 35)
+layout_mode = 0
 offset_left = 50.0
 offset_top = 38.0
 offset_right = 398.0
@@ -972,6 +974,7 @@ texture = ExtResource("10_3pb76")
 
 [node name="TopLeft" type="TextureRect" parent="AccountPanel"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
 offset_left = -13.0
 offset_top = -7.0
 offset_right = 51.0
@@ -1080,6 +1083,7 @@ layout_mode = 2
 
 [node name="BottomPattern" type="TextureRect" parent="AccountPanel"]
 custom_minimum_size = Vector2(0, 35)
+layout_mode = 0
 offset_left = 47.0
 offset_top = 488.0
 offset_right = 394.0
